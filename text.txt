@@ -1,0 +1,23 @@
+var studentList = [];
+
+function Student(data) {
+  this.firstname = data.firstname || "";
+  this.lastname = data.lastname || "";
+  this.fullname = function() {
+    return this.firstname + this.lastname;
+  }
+}
+
+var data = JSON.parse(localStorage.getItem("students"));
+
+var newList = [];
+
+for (var i = 0; i < data.length; i++) {
+  if (data[i] instanceof Student)
+    {
+      const stu = new Student(data);
+      newList.push(stu);
+    }
+}
+
+studentList = [...newList];
