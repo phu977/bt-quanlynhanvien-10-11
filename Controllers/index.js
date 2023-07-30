@@ -73,7 +73,7 @@ function suaNhanVien(indexFix) {
   document.querySelector("#chucvu").value = NhanVienFix.chucvu;
   document.querySelector("#gioLam").value = NhanVienFix.gioLam;
 }
-document.querySelector("#btnCapNhat").onclick = function() {
+document.querySelector("#btnCapNhat").onclick = function () {
   var nhanVienUpdate = new NhanVien();
   nhanVienUpdate.tknv = document.querySelector("#tknv").value;
   nhanVienUpdate.name = document.querySelector("#name").value;
@@ -84,13 +84,13 @@ document.querySelector("#btnCapNhat").onclick = function() {
   nhanVienUpdate.chucvu = document.querySelector("#chucvu").value;
   nhanVienUpdate.gioLam = document.querySelector("#gioLam").value;
   var indexUpdate = -1;
-  for(var index = 0 ; index < arrNhanVien.length;index++){
-    if(arrNhanVien[index].tknv === nhanVienUpdate.tknv){
+  for (var index = 0; index < arrNhanVien.length; index++) {
+    if (arrNhanVien[index].tknv === nhanVienUpdate.tknv) {
       indexUpdate = index;
-      break
+      break;
     }
   }
-  if(indexUpdate !== -1){
+  if (indexUpdate !== -1) {
     arrNhanVien[indexUpdate].name = nhanVienUpdate.name;
     arrNhanVien[indexUpdate].email = nhanVienUpdate.email;
     arrNhanVien[indexUpdate].password = nhanVienUpdate.password;
@@ -101,7 +101,7 @@ document.querySelector("#btnCapNhat").onclick = function() {
     renderTableNhanVien(arrNhanVien);
     saveStorageArrNhanVien();
   }
-}
+};
 //Phương thức lưu vào application storage
 function saveStorageArrNhanVien() {
   //Chuyển arr về chuỗi
@@ -112,19 +112,25 @@ function saveStorageArrNhanVien() {
 
 //Phương thức lấy dữ liệu từ localstorage
 function getStorageJSON(name) {
-  if (localStorage.getItem(name)) {
-    //Nếu có storage name đó thì mới đi vào if
-    var str = localStorage.getItem(name);
-    var  NhanVienList= JSON.parse(str);
-    for(var index = 0; index < NhanVienList.length; index++){
-      var nhanVien = NhanVienList[index];
-      NhanVienList[index] = new NhanVien(nhanVien.tknv,nhanVien.name,nhanVien.email,nhanVien.password,nhanVien.luongCB,nhanVien.chucvu,nhanVien.gioLam,nhanVien.datepicker);
-    }
-    console.log(NhanVienList);
-    return NhanVienList;
+  var json = localStorage.getItem(name);
+  //kiểm tra xem giá trị lấy về từ local có giá trị nào không, nếu k có thì return về mảng rỗng
+  if (!json) {
+    return [];
   }
-  return [];
- 
+  var list = JSON.parse(json);
+  for (var index = 0; index < list.length; index++) {
+    var nhanVien = list[index];
+    list[index] = new NhanVien();
+    (list[index].tknv = nhanVien.tknv),
+      (list[index].name = nhanVien.name),
+      (list[index].email = nhanVien.email),
+      (list[index].password = nhanVien.password),
+      (list[index].luongCB = nhanVien.luongCB),
+      (list[index].chucvu = nhanVien.chucvu),
+      (list[index].gioLam = nhanVien.gioLam),
+      (list[index].datepicker = nhanVien.datepicker);
+  }
+  return list;
 }
 
 window.onload = function () {
@@ -138,4 +144,3 @@ window.onload = function () {
     renderTableNhanVien(arrNhanVien);
   }
 };
-
