@@ -20,14 +20,14 @@ document.querySelector("#btnThemNV").onclick = function () {
   console.log(arrNhanVien);
   renderTableNhanVien(arrNhanVien);
   saveStorageArrNhanVien();
-  // document.querySelector("#tknv").value = "";
-  // document.querySelector("#name").value = "";
-  // document.querySelector("#email").value = "";
-  // document.querySelector("#password").value = "";
-  // document.querySelector("#datepicker").value = "";
-  // document.querySelector("#luongCB").value = "";
-  // document.querySelector("#chucvu").value = "";
-  // document.querySelector("#gioLam").value = "";
+  document.querySelector("#tknv").value = "";
+  document.querySelector("#name").value = "";
+  document.querySelector("#email").value = "";
+  document.querySelector("#password").value = "";
+  document.querySelector("#datepicker").value = "";
+  document.querySelector("#luongCB").value = "";
+  document.querySelector("#chucvu").value = "";
+  document.querySelector("#gioLam").value = "";
 };
 /**
  *
@@ -100,6 +100,14 @@ document.querySelector("#btnCapNhat").onclick = function () {
     arrNhanVien[indexUpdate].gioLam = nhanVienUpdate.gioLam;
     renderTableNhanVien(arrNhanVien);
     saveStorageArrNhanVien();
+    document.querySelector("#tknv").value = "";
+    document.querySelector("#name").value = "";
+    document.querySelector("#email").value = "";
+    document.querySelector("#password").value = "";
+    document.querySelector("#datepicker").value = "";
+    document.querySelector("#luongCB").value = "";
+    document.querySelector("#chucvu").value = "";
+    document.querySelector("#gioLam").value = "";
   }
 };
 
