@@ -102,6 +102,27 @@ document.querySelector("#btnCapNhat").onclick = function () {
     saveStorageArrNhanVien();
   }
 };
+
+document.querySelector("#btnTimNV").onclick = function () {
+  console.log("yes");
+  var tuKhoa = document.querySelector("#searchName").value;
+  if (tuKhoa === "") {
+    alert("Vui lòng nhập xếp loại để tìm kiếm!");
+    return;
+  }
+
+  var danhSachTimThay = arrNhanVien.filter(function (nhan_vien) {
+    return xepLoai(nhan_vien.gioLam) === tuKhoa;
+  });
+  console.log(danhSachTimThay);
+  if (danhSachTimThay.length > 0) {
+    renderTableNhanVien(danhSachTimThay);
+  } else {
+    console.log(`Không tìm thấy nhân viên nào có xếp loại "${tuKhoa}".`);
+    document.querySelector("#tableDanhSach").innerHTML = "";
+  }
+};
+
 //Phương thức lưu vào application storage
 function saveStorageArrNhanVien() {
   //Chuyển arr về chuỗi

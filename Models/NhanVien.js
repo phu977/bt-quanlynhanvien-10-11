@@ -19,15 +19,15 @@ function NhanVien() {
   };
   this.xepLoai = function () {
     var xepLoai = "";
-    if (this.chucvu == "Nhân viên" && this.gioLam >= 196) {
-      xepLoai = "nhân viên xuất sắc";
-    } else if (this.chucvu == "Nhân viên" && this.gioLam >= 176) {
-      xepLoai = "nhân viên giỏi";
-    } else if (this.chucvu == "Nhân viên" && this.gioLam >= 160) {
-      xepLoai = "nhân viên khá";
-    } else if(this.chucvu == "Nhân viên" && this.gioLam < 160) {
-        xepLoai = "nhân viên trung bình";
+    if (this.gioLam >= 196) {
+      xepLoai = "xuất sắc";
+    } else if (this.gioLam >= 176) {
+      xepLoai = "giỏi";
+    } else if (this.gioLam >= 160) {
+      xepLoai = "khá";
+    } else if (this.gioLam < 160) {
+      xepLoai = "trung bình";
     }
-    return xepLoai;  
+    return xepLoai;
   };
 }

@@ -21,3 +21,21 @@ for (var i = 0; i < data.length; i++) {
 }
 
 studentList = [...newList];
+
+document.querySelector("#btnTimNV").onlick = function () {
+  console.log("yes");
+  // var tukhoa = document.querySelector("#searchName").value;
+  // if(tukhoa == ""){
+  //   renderTableNhanVien(arrNhanVien);
+  //   return
+  // }
+  // var danhSachTimThay = arrNhanVien.filter(function (nhan_vien) {
+  //   return xepLoai(nhan_vien.gioLam) === tukhoa;
+  // });
+  // if (danhSachTimThay.length > 0) {
+  //   renderTableNhanVien(danhSachTimThay);
+  // }else {
+  //   console.log(`Không tìm thấy nhân viên nào có xếp loại "${tuKhoa}".`);
+  //   document.querySelector("#tableDanhSach").innerHTML = "";F
+  // }
+}
