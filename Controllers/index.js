@@ -29,34 +29,7 @@ document.querySelector("#btnThemNV").onclick = function () {
   document.querySelector("#chucvu").value = "";
   document.querySelector("#gioLam").value = "";
 };
-/**
- *
- * @param {*} arrNV input của hàm là một mảng chứa các đối tượng
- * Mục đích hiện thị danh sách đối tượng lên UI/UX
- *
- */
-function renderTableNhanVien(arrNV) {
-  var outputHTML = "";
-  for (var index = 0; index < arrNV.length; index++) {
-    var nhanVien = arrNV[index];
-    outputHTML += `
-            <tr>
-                <td>${nhanVien.tknv}</td>
-                <td>${nhanVien.name}</td>
-                <td>${nhanVien.email}</td>
-                <td>${nhanVien.datepicker}</td>
-                <td>${nhanVien.chucvu}</td>
-                <td>${nhanVien.tongLuong().toLocaleString()}</td>
-                <td>${nhanVien.xepLoai()}</td>
-                <td class="d-flex">
-                    <button class="btn btn-danger" onclick="xoaNhanVien('${index}')">Xoá</button>
-                    <button class="btn btn-primary mx-2" data-toggle="modal" data-target="#myModal"  onclick="suaNhanVien('${index}')">Sửa</button>
-                </td>
-            </tr>
-        `;
-  }
-  document.querySelector("#tableDanhSach").innerHTML = outputHTML;
-}
+
 function xoaNhanVien(indexDel) {
   arrNhanVien.splice(indexDel, 1);
   //Sau khi xoá thì tạo lại table
@@ -114,13 +87,14 @@ document.querySelector("#btnCapNhat").onclick = function () {
 document.querySelector("#btnTimNV").onclick = function () {
   console.log("yes");
   var tuKhoa = document.querySelector("#searchName").value;
+  tuKhoa = stringToSlug(tuKhoa);
   if (tuKhoa === "") {
     alert("Vui lòng nhập xếp loại để tìm kiếm!");
     return;
   }
 
   var danhSachTimThay = arrNhanVien.filter(function (nhan_vien) {
-    return xepLoai(nhan_vien.gioLam) === tuKhoa;
+    return stringToSlug(xepLoai(nhan_vien.gioLam)) === tuKhoa;
   });
   console.log(danhSachTimThay);
   if (danhSachTimThay.length > 0) {
