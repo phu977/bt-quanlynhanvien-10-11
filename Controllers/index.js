@@ -12,7 +12,17 @@ document.querySelector("#btnThemNV").onclick = function () {
   nhanVienNew.luongCB = document.querySelector("#luongCB").value;
   nhanVienNew.chucvu = document.querySelector("#chucvu").value;
   nhanVienNew.gioLam = document.querySelector("#gioLam").value * 1;
-
+  // kiem tra rong
+  var valid =
+    validation.kiemTraRong(nhanVienNew.tknv, "taikhoan") &
+    validation.kiemTraRong(nhanVienNew.name, "name");
+  // kiem tra number
+  var valid =
+    validation.kiemTraNumber(nhanVienNew.luongCB, "luongCB") &
+    validation.kiemTraNumber(nhanVienNew.luongCB,"gioLam");
+  if (!valid) {
+    return;
+  }
   console.log(nhanVienNew);
   console.log(nhanVienNew.tongLuong().toLocaleString());
   console.log(nhanVienNew.xepLoai());
