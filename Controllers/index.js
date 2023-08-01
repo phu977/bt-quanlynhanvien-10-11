@@ -13,13 +13,12 @@ document.querySelector("#btnThemNV").onclick = function () {
   nhanVienNew.chucvu = document.querySelector("#chucvu").value;
   nhanVienNew.gioLam = document.querySelector("#gioLam").value * 1;
   // kiem tra rong
-  var valid =
-    validation.kiemTraRong(nhanVienNew.tknv, "taikhoan") &
-    validation.kiemTraRong(nhanVienNew.name, "name");
+  var valid = validation.kiemTraRong(nhanVienNew.tknv, "taikhoan") & validation.kiemTraRong(nhanVienNew.name, "name") & validation.kiemTraRong(nhanVienNew.password,"password");
+  // kiem tra email
+  var valid = validation.kiemTraEmail(nhanVienNew.email,"email");
   // kiem tra number
-  var valid =
-    validation.kiemTraNumber(nhanVienNew.luongCB, "luongCB") &
-    validation.kiemTraNumber(nhanVienNew.luongCB,"gioLam");
+  var valid = validation.kiemTraNumber(nhanVienNew.luongCB, "luongCB");
+  
   if (!valid) {
     return;
   }
