@@ -17,7 +17,7 @@ document.querySelector("#btnThemNV").onclick = function () {
   // kiem tra email
   var valid = validation.kiemTraEmail(nhanVienNew.email,"email");
   // kiem tra number
-  var valid = validation.kiemTraNumber(nhanVienNew.luongCB, "luongCB");
+  var valid = validation.kiemTraNumber(nhanVienNew.luongCB, "luongCB") & validation.kiemTraNumber(nhanVienNew.email,"gioLam");
   
   if (!valid) {
     return;
