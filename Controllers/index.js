@@ -35,7 +35,7 @@ document.querySelector("#btnThemNV").onclick = function () {
   document.querySelector("#password").value = "";
   document.querySelector("#datepicker").value = "";
   document.querySelector("#luongCB").value = "";
-  document.querySelector("#chucvu").value = "";
+  document.querySelector("#chucvu").value = "Chọn chức vụ";
   document.querySelector("#gioLam").value = "";
 };
 /**
@@ -115,7 +115,7 @@ document.querySelector("#btnCapNhat").onclick = function () {
     document.querySelector("#password").value = "";
     document.querySelector("#datepicker").value = "";
     document.querySelector("#luongCB").value = "";
-    document.querySelector("#chucvu").value = "";
+    document.querySelector("#chucvu").value = "Chọn chức vụ";
     document.querySelector("#gioLam").value = "";
   }
 };
