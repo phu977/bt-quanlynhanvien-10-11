@@ -5,7 +5,7 @@ function NhanVien() {
   this.password = "";
   this.luongCB = "";
   this.chucvu = "";
-  this.gioLam = "";
+  this.gioLam = 0;
   this.tongLuong = function () {
     var sum = 0;
     if (this.chucvu == "Sếp") {
@@ -19,13 +19,13 @@ function NhanVien() {
   };
   this.xepLoai = function () {
     var xepLoai = "";
-    if (this.gioLam >= 196) {
+    if (this.chucvu == "Nhân viên" && this.gioLam >= 196) {
       xepLoai = "xuất sắc";
-    } else if (this.gioLam >= 176) {
+    } else if (this.chucvu == "Nhân viên" && this.gioLam >= 176) {
       xepLoai = "giỏi";
-    } else if (this.gioLam >= 160) {
+    } else if (this.chucvu == "Nhân viên" && this.gioLam >= 160) {
       xepLoai = "khá";
-    } else if (this.gioLam < 160) {
+    } else if (this.chucvu == "Nhân viên" && this.gioLam < 160) {
       xepLoai = "trung bình";
     }
     return xepLoai;

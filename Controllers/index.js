@@ -17,7 +17,7 @@ document.querySelector("#btnThemNV").onclick = function () {
   // kiem tra email
   var valid = validation.kiemTraEmail(nhanVienNew.email,"email");
   // kiem tra number
-  var valid = validation.kiemTraNumber(nhanVienNew.luongCB, "luongCB") & validation.kiemTraNumber(nhanVienNew.email,"gioLam");
+  var valid = validation.kiemTraNumber(nhanVienNew.luongCB, "luongCB") & validation.kiemTraNumber(nhanVienNew.gioLam,"time");
   
   if (!valid) {
     return;
@@ -38,7 +38,34 @@ document.querySelector("#btnThemNV").onclick = function () {
   document.querySelector("#chucvu").value = "";
   document.querySelector("#gioLam").value = "";
 };
-
+/**
+ *
+ * @param {*} arrNV input của hàm là một mảng chứa các đối tượng
+ * Mục đích hiện thị danh sách đối tượng lên UI/UX
+ *
+ */
+function renderTableNhanVien(arrNV) {
+  var outputHTML = "";
+  for (var index = 0; index < arrNV.length; index++) {
+    var nhanVien = arrNV[index];
+    outputHTML += `
+            <tr>
+                <td>${nhanVien.tknv}</td>
+                <td>${nhanVien.name}</td>
+                <td>${nhanVien.email}</td>
+                <td>${nhanVien.datepicker}</td>
+                <td>${nhanVien.chucvu}</td>
+                <td>${nhanVien.tongLuong().toLocaleString()}</td>
+                <td>${nhanVien.xepLoai()}</td>
+                <td class="d-flex">
+                    <button class="btn btn-danger" onclick="xoaNhanVien('${index}')">Xoá</button>
+                    <button class="btn btn-primary mx-2" data-toggle="modal" data-target="#myModal"  onclick="suaNhanVien('${index}')">Sửa</button>
+                </td>
+            </tr>
+        `;
+  }
+  document.querySelector("#tableDanhSach").innerHTML = outputHTML;
+}
 function xoaNhanVien(indexDel) {
   arrNhanVien.splice(indexDel, 1);
   //Sau khi xoá thì tạo lại table
@@ -109,8 +136,8 @@ document.querySelector("#btnTimNV").onclick = function () {
   if (danhSachTimThay.length > 0) {
     renderTableNhanVien(danhSachTimThay);
   } else {
-    console.log(`Không tìm thấy nhân viên nào có xếp loại "${tuKhoa}".`);
-    document.querySelector("#tableDanhSach").innerHTML = "";
+    alert(`Không tìm thấy nhân viên nào có xếp loại "${tuKhoa}".`);
+    // document.querySelector("#tableDanhSach").innerHTML = "";
   }
 };
 
